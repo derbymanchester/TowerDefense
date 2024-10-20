@@ -13,11 +13,52 @@ cbullet::cbullet()
 		}
 	}
 }
-void cbullet::updateMap(int i, int j, cpoint v) 
+
+void cbullet::updateMap(int i, int j, cpoint v)
 {
 	if (i >= 0 && i < cpoint::MAP_SIZE && j >= 0 && j < cpoint::MAP_SIZE)
 		_m[i][j] = v;
 }
+
+cpoint cbullet::getCurr()
+{
+	return _curr;
+}
+
+void cbullet::setCurr(cpoint tcurr)
+{
+	if (tcurr.getX() >= 0 && tcurr.getX() < cpoint::MAP_SIZE &&
+		tcurr.getY() >= 0 && tcurr.getY() < cpoint::MAP_SIZE)
+		_curr = tcurr;
+}
+
+cpoint* cbullet::getP()
+{
+	return _p;
+}
+
+int cbullet::getSpeed()
+{
+	return _speed;
+}
+
+int cbullet::getN()
+{
+	return _n;
+}
+
+void setN(int tn)
+{
+	if (tn >= 0 && tn <= cpoint::MAP_SIZE * cpoint::MAP_SIZE)
+		_n = tn;
+}
+
+void setSpeed(int tspeed)
+{
+	if (tspeed > 0)
+		_speed = tspeed;
+}
+
 int cbullet::queryCFromRowCol(int row, int col) 
 {
 	if (row < 0 || row >= cpoint::MAP_SIZE || col < 0 || col >= cpoint::MAP_SIZE)
